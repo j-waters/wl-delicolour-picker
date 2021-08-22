@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 #
 # License: MIT
 #
@@ -14,19 +14,17 @@
 
 # Check if running under wayland.
 if [ "$WAYLAND_DISPLAY" = "" ]; then
-    zenity  --error --width 400 \
-        --title "No wayland session found." \
-        --text "This color picker must be run under a valid wayland session."
-
+    >&2 echo "This color picker must be run under a valid wayland session."
     exit 1
 fi
 
 # Get color position
 position=$(slurp -b 00000000 -p)
 
-# Sleep at least for a second to prevet issues with grim always
-# returning improper color.
-sleep 1
+# Hide cursor while grabbing the screenshot
+swaymsg seat seat0 hide_cursor 1
+
+sleep 0.2
 
 # Store the hex color value using graphicsmagick or imagemagick.
 if command -v /usr/bin/gm &> /dev/null; then
@@ -45,20 +43,8 @@ else
     )
 fi
 
-# Display a color picker and store the returned rgb color
-rgb_color=$(zenity --color-selection \
-    --title="Copy color to Clipboard" \
-    --color="${color}"
-)
 
-# Execute if user didn't click cancel
-if [ "$rgb_color" != "" ]; then
-    # Convert rgb color to hex
-    hex_color="#"
-    for value in $(echo "${rgb_color}" | grep -E -o -m1 '[0-9]+'); do
-        hex_color="$hex_color$(printf "%.2x" $value)"
-    done
+# Show cursor
+swaymsg seat seat0 hide_cursor 0
 
-    # Copy user selection to clipboard
-    echo $hex_color | wl-copy -n
-fi
+delicolour $color

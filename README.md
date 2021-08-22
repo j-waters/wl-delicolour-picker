@@ -1,8 +1,11 @@
-# wl-color-picker
+# wl-delicolour-picker
 
 A script that provides a working color picker for wayland and wlroots
 by leveraging [grim](https://github.com/emersion/grim) and
-[slurp](https://github.com/emersion/slurp).
+[slurp](https://github.com/emersion/slurp). The picked color will then 
+be openened in [delicolour](https://github.com/eepp/delicolour).
+
+A fork of https://github.com/jgmdev/wl-color-picker.
 
 ## Inspiration
 
@@ -23,12 +26,12 @@ so all credits go to the papirus icon designers.
 * __slurp__ - provides the screen location picker
 * __grim__ - uses the location provided by slurp and generates a pixel
 * __convert__ - uitlity from imagemagick to make the pixel a hex number (graphicsmagick is also supported)
-* __zenity__ - display a nice color selector dialog where the picked color can be tweaked further
+* __delicolour__ - display a nice color selector dialog where the picked color can be tweaked further
 * __wl-copy__ - copy the selected color to the clipboard
 
 ## Packages
 
-ArchLinux - install from [AUR](https://aur.archlinux.org/packages/wl-color-picker)
+ArchLinux - install from [AUR](https://aur.archlinux.org/packages/wl-delicolour-picker)
 ```sh
-yay -S wl-color-picker
+yay -S wl-delicolour-picker
 ```

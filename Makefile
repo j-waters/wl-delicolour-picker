@@ -1,7 +1,7 @@
 .PHONY: install uninstall
 
 all:
-	@echo "Nothing to compile. Use 'make [DESTDIR=dir] install' to install wl-color-picker."
+	@echo "Nothing to compile. Use 'make [DESTDIR=dir] install' to install wl-delicolour-picker."
 
 install:
 	@if [ "$$DESTDIR" = "" ]; then \
@@ -11,7 +11,7 @@ install:
 		fi; \
 	fi;
 
-	@depends="grim slurp convert zenity wl-copy"; \
+	@depends="grim slurp convert wl-copy delicolour"; \
 	for dependency in $$(echo "$$depends" | xargs) ; do \
 		echo "Checking for: $$dependency."; \
 		if ! which "$$dependency" > /dev/null 2>&1 ; then \
@@ -24,7 +24,7 @@ install:
 
 	@echo
 
-	@if [ -e "$$DESTDIR/usr/bin/wl-color-picker" ]; then \
+	@if [ -e "$$DESTDIR/usr/bin/wl-delicolour-picker" ]; then \
 		echo "Please un-install the previous version first"; \
 		exit 1; \
 	fi; \
@@ -45,13 +45,13 @@ install:
 		mkdir -p "$$DESTDIR/usr/share/icons/hicolor/scalable/apps"; \
 	fi;
 
-	@echo 'Copying wl-color-picker'
+	@echo 'Copying wl-delicolour-picker'
 	@echo
 
-	cp wl-color-picker.sh "$$DESTDIR/usr/bin/wl-color-picker"
-	cp wl-color-picker.png "$$DESTDIR/usr/share/icons/"
-	cp wl-color-picker.svg "$$DESTDIR/usr/share/icons/hicolor/scalable/apps/"
-	cp wl-color-picker.desktop "$$DESTDIR/usr/share/applications/"
+	cp wl-delicolour-picker.sh "$$DESTDIR/usr/bin/wl-delicolour-picker"
+	cp wl-delicolour-picker.png "$$DESTDIR/usr/share/icons/"
+	cp wl-delicolour-picker.svg "$$DESTDIR/usr/share/icons/hicolor/scalable/apps/"
+	cp wl-delicolour-picker.desktop "$$DESTDIR/usr/share/applications/"
 
 	@echo
 	@echo 'Done!'
@@ -64,13 +64,13 @@ uninstall:
 		exit 1; \
 	fi;
 
-	@echo 'Uninstalling wl-color-picker'
+	@echo 'Uninstalling wl-delicolour-picker'
 	@echo
 
-	rm "/usr/bin/wl-color-picker"
-	rm "/usr/share/icons/wl-color-picker.png"
-	rm "/usr/share/icons/hicolor/scalable/apps/wl-color-picker.svg"
-	rm "/usr/share/applications/wl-color-picker.desktop"
+	rm "/usr/bin/wl-delicolour-picker"
+	rm "/usr/share/icons/wl-delicolour-picker.png"
+	rm "/usr/share/icons/hicolor/scalable/apps/wl-delicolour-picker.svg"
+	rm "/usr/share/applications/wl-delicolour-picker.desktop"
 
 	@echo
 	@echo 'Done!'

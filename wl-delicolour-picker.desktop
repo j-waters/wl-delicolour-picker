@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Delicolour Picker for Wayland
+GenericName=Color Picker
+Comment=A color picker for delicolour that works on wayland.
+Keywords=color;picker;wl-delicolour-picker;delicolour;
+Categories=Graphics;2DGraphics;
+Exec=wl-delicolour-picker
+Hidden=false
+Terminal=false
+Icon=wl-delicolour-picker
