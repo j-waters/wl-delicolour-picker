@@ -23,4 +23,5 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   make -j1 DESTDIR="${pkgdir}" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
